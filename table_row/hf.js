@@ -54,6 +54,14 @@ for(let a of arr) {
 
     const tr2_td1 = document.createElement('td');
     tr2_td1.innerText = a.nationality;
+    //  eseménykezelés
+    tr2_td1.addEventListener('click', function(e) {
+        /**
+         * @type {HTMLTableCellElement}
+         */
+        const a = e.target;
+        a.classList.add('marked');
+    });
     tr2.appendChild(tr2_td1);
 
     const tr2_td2 = document.createElement('td');
