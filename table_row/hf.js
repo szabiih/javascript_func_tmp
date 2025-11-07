@@ -1,5 +1,5 @@
 /**
- * @type {{nationality:string, author1:string, author2?:string, literarypiece1:string, literarypiece2?:string}}
+ * @type {{nationality:string, author1:string, author2?:string, literarypiece1:string, literarypiece2?:string}[]}
  */
 
 const arr = [
@@ -87,3 +87,80 @@ for(let a of arr) {
         tr2_td1.rowSpan = 2;
     }
 }
+
+const element = document.getElementById('htmlform');
+element.addEventListener('submit', function(e) {
+    e.preventDefault();     //  alapértelmezett működés meggátolása
+    /**
+     * @type {HTMLFormElement}
+     */
+    const a = e.target;
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const alma = a.querySelector('#nemzetiseg');
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const korte = a.querySelector('#szerzo1');
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const banan = a.querySelector('#szerzo2');
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const mango = a.querySelector('#mu1');
+
+    /**
+     * @type {HTMLInputElement}
+     */
+    const szollo = a.querySelector('#mu2');
+
+    /**
+     * @type {string}
+     */
+    const almaValue = alma.value;
+
+    /**
+     * @type {string}
+     */
+    const korteValue = korte.value;
+
+    /**
+     * @type {string}
+     */
+    const bananValue = banan.value;
+
+    /**
+     * @type {string}
+     */
+    const mangoValue = mango.value;
+
+    /**
+     * @type {string}
+     */
+    const szolloValue = szollo.value;
+
+    /**
+     * @type {{nationality:string, author1:string, author2?:string, literarypiece1:string, literarypiece2?:string}}
+     */
+    const obj = {}
+
+    obj.nemzetiseg = almaValue;
+    obj.szerzo1 = korteValue;
+    obj.szerzo2 = bananValue;
+    obj.mu1 = mangoValue;
+    obj.mu2 = szolloValue;
+
+    const tbody = document.getElementById('mano');
+    const tr = document.createElement('tr');
+    tbody.appendChild(tr);
+
+    const td01 = document.createElement('td');
+    td01.innerText = obj.nemzetiseg;
+});
