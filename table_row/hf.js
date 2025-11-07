@@ -151,16 +151,68 @@ element.addEventListener('submit', function(e) {
      */
     const obj = {}
 
-    obj.nemzetiseg = almaValue;
-    obj.szerzo1 = korteValue;
-    obj.szerzo2 = bananValue;
-    obj.mu1 = mangoValue;
-    obj.mu2 = szolloValue;
+    obj.nationality = almaValue;
+    obj.author1 = korteValue;
+    obj.author2 = bananValue;
+    obj.literarypiece1 = mangoValue;
+    obj.literarypiece2 = szolloValue;
 
     const tbody = document.getElementById('mano');
-    const tr = document.createElement('tr');
-    tbody.appendChild(tr);
+    const tr2 = document.createElement('tr');
+    tbody.appendChild(tr2);
 
-    const td01 = document.createElement('td');
-    td01.innerText = obj.nemzetiseg;
+    const tr2_td1 = document.createElement('td');
+    tr2_td1.innerText = obj.nationality;
+    //  eseménykezelés
+    tr2_td1.addEventListener('click', function(e) {
+        /**
+         * @type {HTMLTableCellElement}
+         */
+        const a = e.target;
+        a.classList.add('marked');
+    });
+    tr2.appendChild(tr2_td1);
+
+    const tr2_td2 = document.createElement('td');
+    tr2_td2.innerText = obj.author1;
+    tr2.appendChild(tr2_td2);
+
+    const tr2_td3 = document.createElement('td');
+    tr2_td3.innerText = obj.literarypiece1;
+    tr2.appendChild(tr2_td3);
+
+    if (a.author2 != '' && obj.literarypiece2 != '') {
+        const tr3 = document.createElement('tr');
+        tbody.appendChild(tr3);
+
+        const tr3_td2 = document.createElement('td');
+        tr3_td2.innerText = obj.author2;
+        tr3.appendChild(tr3_td2);
+
+        const tr3_td3 = document.createElement('td');
+        tr3_td3.innerText = obj.literarypiece2;
+        tr3.appendChild(tr3_td3);
+
+        tr2_td1.rowSpan = 2;
+    }
 });
+
+function createFormElement (from, id, LabelContent){
+    const label = document.createElement('label');
+    label.htmlFor = id;
+    label.innerText = LabelContent;
+    from.appendChild(label);
+
+    const input = document.createElement('input');
+    input.id = id;
+    from.appendChild(input);
+}
+
+const formNew = document.createElement('form');
+document.body.appendChild(formNew);
+
+createFormElement(formNew, 'nemzetiseg', 'Nemzetiség:');
+createFormElement(formNew, 'szerzo1', 'Szerző neve:');
+createFormElement(formNew, 'szerzo2', 'Szerző neve:');
+createFormElement(formNew, 'mu1', 'Mű címe:');
+createFormElement(formNew, 'mu2', 'Mű címe:');
