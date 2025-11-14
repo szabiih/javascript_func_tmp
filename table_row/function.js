@@ -1,62 +1,6 @@
 /**
  * @typedef {{brand:string,model:string,year:string,designer1:string,designer2?:string}} CountryWriters
  */
-/**
- * @type {CountryWriters[]}
- */
-
-const arr = [
-    {
-        nationality: 'Orosz',
-        author1: 'Gogol',
-        literarypiece1: 'A köpönyeg',
-        author2: 'Csehov',
-        literarypiece2: 'A csinovnyik halála',
-    },
-    {
-        nationality: 'Cseh',
-        author1: 'Franz Kafka',
-        literarypiece1: 'Az átváltozás',
-    },
-    {
-        nationality: 'Magyar',
-        author1: 'Örkény István',
-        literarypiece1: 'gyperces Novellák',
-        author2: 'József Attila',
-        literarypiece2: 'Klárisok',
-    },
-    {
-        nationality: 'Svácj',
-        author1: 'Friedrich Dürrenmatt',
-        literarypiece1: 'A fizikusok',
-    }
-]
-
-const table = document.createElement('table');
-document.body.appendChild(table);
-
-const thead = document.createElement('thead');
-table.appendChild(thead);
-
-const tr1 = document.createElement('tr');
-thead.appendChild(tr1);
-
-const a = ['Nemzetiség', 'Szerző', 'Mű'];
-for(let i of a) {
-    const th = document.createElement('th');
-    tr1.appendChild(th);
-    th.innerText = i;
-}
-
-const tbody = document.createElement('tbody');
-table.appendChild(tbody);
-
-for(let a of arr) {
-    renderTableRow(tbody, a);
-}
-
-const element = document.getElementById('htmlform');
-element.addEventListener('submit', HTMLFormEventLister);
 
 function createFormElement (from, id, LabelContent){
     const label = document.createElement('label');
@@ -68,16 +12,6 @@ function createFormElement (from, id, LabelContent){
     input.id = id;
     from.appendChild(input);
 }
-
-const formNew = document.createElement('form');
-document.body.appendChild(formNew);
-
-createFormElement(formNew, 'nemzetiseg', 'Nemzetiség:');
-createFormElement(formNew, 'szerzo1', 'Szerző neve:');
-createFormElement(formNew, 'szerzo2', 'Szerző neve:');
-createFormElement(formNew, 'mu1', 'Mű címe:');
-createFormElement(formNew, 'mu2', 'Mű címe:');
-
 
 /**
  * @param {*} tablebody
